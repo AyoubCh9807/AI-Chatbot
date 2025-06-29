@@ -84,7 +84,7 @@ func main() {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://ai-chatbot-three-psi-95.vercel.app/"}, // next js front end server
+		AllowOrigins:     []string{"https://ai-chatbot-three-psi-95.vercel.app"}, // next js front end server
 		AllowMethods:     []string{"POST", "GET", "OPTIONS"},                      // allowed methods
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},     //allowed headers
 		AllowCredentials: true,
