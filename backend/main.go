@@ -98,7 +98,7 @@ func main() {
 			return
 		}
 
-		generated, err := callCohere(req.Prompt, apiKey)
+		generated, err := callCohere("in 97 words: " + req.Prompt, apiKey)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "failed to generate"})
 			return
