@@ -18,7 +18,6 @@ import (
 
 type ReqBody struct {
 	Prompt string `json:"prompt"`
-	Code   string `json:"code"`
 }
 
 type CohereRequest struct {
@@ -85,9 +84,9 @@ func main() {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000"},                   // next js front end server
-		AllowMethods:     []string{"POST", "GET", "OPTIONS"},                  // allowed methods
-		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"}, //allowed headers
+		AllowOrigins:     []string{"https://ai-chatbot-three-psi-95.vercel.app/"}, // next js front end server
+		AllowMethods:     []string{"POST", "GET", "OPTIONS"},                      // allowed methods
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},     //allowed headers
 		AllowCredentials: true,
 	}))
 
@@ -99,7 +98,7 @@ func main() {
 			return
 		}
 
-		generated, err := callCohere(req.Prompt+" "+req.Code, apiKey)
+		generated, err := callCohere(req.Prompt, apiKey)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "failed to generate"})
 			return
